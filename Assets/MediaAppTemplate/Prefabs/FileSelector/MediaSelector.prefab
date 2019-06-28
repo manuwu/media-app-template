@@ -362,11 +362,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mediaSelectorContainer: {fileID: 1000010666019218}
-  videoPlayerPrefab: {fileID: 1000013357446120, guid: fadb14cb0364a4f83b9ba84bb1a8b6ff,
-    type: 2}
+  videoPlayerPrefab: {fileID: 129894, guid: c404114afaafa3b4494665d1634c383c, type: 2}
   photoPlayerPrefab: {fileID: 1000013357446120, guid: 8522f38ba025b444d9d35424f82049af,
     type: 2}
   mediaScreenController: {fileID: 114000010399567966}
+  fileSelector: {fileID: 0}
 --- !u!114 &114000010737543006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -774,7 +774,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114000012423829934}
   m_HandleRect: {fileID: 224000012100265462}
   m_Direction: 0
-  m_Value: 0
+  m_Value: 0.5
   m_Size: 0
   m_NumberOfSteps: 0
   m_OnValueChanged:

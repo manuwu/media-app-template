@@ -22,140 +22,167 @@ using System.Linq;
 using System.Text;
 using DaydreamElements.Common;
 
-namespace Daydream.MediaAppTemplate {
+namespace Daydream.MediaAppTemplate
+{
 
-  /// This script represents a single page in the file selector.
-  /// Each tile in the page represents either a directory or a file.
-  [RequireComponent(typeof(TiledPage))]
-  public class FileSelectorPage : MonoBehaviour {
-    [SerializeField]
-    private FileSelectorTilePrefabData prefabData;
-  
-    [SerializeField]
-    private LayoutGroup layoutGroup;
-  
-    [SerializeField]
-    private int maxTileCount;
-  
-    private List<FileSelectorTile> tiles = new List<FileSelectorTile>();
-    private TiledPage tiledPage;
-    private Coroutine refreshTiledPageCoroutine;
-    private bool isInTransition = false;
+    /// This script represents a single page in the file selector.
+    /// Each tile in the page represents either a directory or a file.
+    [RequireComponent(typeof(TiledPage))]
+    public class FileSelectorPage : MonoBehaviour
+    {
+        [SerializeField]
+        private FileSelectorTilePrefabData prefabData;
 
-    public int MaxTileCount {
-      get {
-        return maxTileCount;
-      }
-    }
+        [SerializeField]
+        private LayoutGroup layoutGroup;
 
-    public bool IsInTransition {
-      get {
-        return isInTransition;
-      }
-      set {
-        if (isInTransition == value) {
-          return;
+        [SerializeField]
+        private int maxTileCount;
+
+        private List<FileSelectorTile> tiles = new List<FileSelectorTile>();
+        private TiledPage tiledPage;
+        private Coroutine refreshTiledPageCoroutine;
+        private bool isInTransition = false;
+
+        public int MaxTileCount
+        {
+            get
+            {
+                return maxTileCount;
+            }
         }
-  
-        isInTransition = value;
-  
-        for (int i = 0; i < tiles.Count; i++) {
-          FileSelectorTile tile = tiles[i];
-          tile.IsInTransition = isInTransition;
+
+        public bool IsInTransition
+        {
+            get
+            {
+                return isInTransition;
+            }
+            set
+            {
+                if (isInTransition == value)
+                {
+                    return;
+                }
+
+                isInTransition = value;
+
+                for (int i = 0; i < tiles.Count; i++)
+                {
+                    FileSelectorTile tile = tiles[i];
+                    tile.IsInTransition = isInTransition;
+                }
+            }
         }
-      }
-    }
 
-    void Awake() {
-      tiledPage = GetComponent<TiledPage>();
-      Assert.IsNotNull(tiledPage);
-    }
-
-    public void Reset() {
-      for (int i = 0; i < tiles.Count; i++) {
-        FileSelectorTile tile = tiles[i];
-  
-        GameObjectPool pool;
-        if (tile.IsDirectory) {
-          pool = ObjectPoolManager.Instance.GetPool<GameObjectPool>(prefabData.DirectoryPrefabName);
-        } else {
-          pool = ObjectPoolManager.Instance.GetPool<GameObjectPool>(tile.CachedPrefabName);
+        void Awake()
+        {
+            tiledPage = GetComponent<TiledPage>();
+            Assert.IsNotNull(tiledPage);
         }
-  
-        tile.Reset();
-  
-        if (pool != null) {
-          pool.Return(tile.gameObject);
-        } else {
-          GameObject.Destroy(tile.gameObject);
+
+        public void Reset()
+        {
+
+            for (int i = 0; i < tiles.Count; i++)
+            {
+                FileSelectorTile tile = tiles[i];
+
+                GameObjectPool pool;
+                if (tile.IsDirectory)
+                {
+                    pool = ObjectPoolManager.Instance.GetPool<GameObjectPool>(prefabData.DirectoryPrefabName);
+                }
+                else
+                {
+                    pool = ObjectPoolManager.Instance.GetPool<GameObjectPool>(prefabData.DefaultFilePrefabName);
+                }
+
+                tile.Reset();
+
+                if (pool != null)
+                {
+                    pool.Return(tile.gameObject);
+                }
+                else
+                {
+                    GameObject.Destroy(tile.gameObject);
+                }
+            }
+            tiles.Clear();
+            tiledPage.Tiles = null;
+            IsInTransition = false;
         }
-      }
-      tiles.Clear();
-      tiledPage.Tiles = null;
-      IsInTransition = false;
-    }
 
-    public FileSelectorTile AddDirectoryTile(DirectoryInfo directory) {
-      FileSelectorTile tile = AddTile(prefabData.DirectoryPrefab, prefabData.DirectoryPrefabName);
-      tile.SetToDirectory(directory);
-      return tile;
-    }
+        public FileSelectorTile AddDirectoryTile(DVDDirectoryInfo directory)
+        {
+            FileSelectorTile tile = AddTile(prefabData.DirectoryPrefab, prefabData.DirectoryPrefabName);
+            tile.SetToDirectory(directory);
+            return tile;
+        }
 
-    /// fileIndex is NOT the index on the page. It is the index in the directory.
-    public FileSelectorTile AddFileTile(FileInfo file, int fileIndex) {
-      StringBuilder displayName, extension;
-      StringHelpers.GetNameWithoutExtension(file, out displayName, out extension);
-      string extensionString = extension.ToString();
-      GameObject prefab = prefabData.GetPrefabForExtension(extensionString);
-      string prefabName = prefabData.GetPrefabNameForExtension(extensionString);
-      FileSelectorTile tile = AddTile(prefab, prefabName);
-      tile.SetToFile(displayName, file, prefabName, fileIndex);
-      return tile;
-    }
+        /// fileIndex is NOT the index on the page. It is the index in the directory.
+        public FileSelectorTile AddFileTile(DVDFileInfo file, int fileIndex)
+        {
+            StringBuilder displayName, extension;
+            StringHelpers.GetNameWithoutExtension(file, out displayName, out extension);
+            string extensionString = extension.ToString();
+            GameObject prefab = prefabData.GetPrefabForExtension(extensionString);
+            string prefabName = prefabData.GetPrefabNameForExtension(extensionString);
+            FileSelectorTile tile = AddTile(prefab, prefabName);
+            tile.SetToFile(displayName, file, prefabName, fileIndex);
+            return tile;
+        }
 
-    private FileSelectorTile AddTile(GameObject prefab, string poolName) {
-      GameObjectPool pool = GetPool(prefab, poolName);
-      GameObject tileObject = pool.Borrow();
-      tileObject.transform.SetParent(layoutGroup.transform, false);
-      tileObject.transform.SetSiblingIndex(tiles.Count);
-  
-      FileSelectorTile tile = tileObject.GetComponent<FileSelectorTile>();
-      Assert.IsNotNull(tile);
-      tiles.Add(tile);
-      MarkTilesDirty();
-      return tile;
-    }
+        private FileSelectorTile AddTile(GameObject prefab, string poolName)
+        {
+            GameObjectPool pool = GetPool(prefab, poolName);
+            GameObject tileObject = pool.Borrow();
+            tileObject.transform.SetParent(layoutGroup.transform, false);
+            tileObject.transform.SetSiblingIndex(tiles.Count);
 
-    private void MarkTilesDirty() {
-      if (refreshTiledPageCoroutine != null) {
-        return;
-      }
-  
-      refreshTiledPageCoroutine = StartCoroutine(RefreshTiledPageDelayed());
-    }
+            FileSelectorTile tile = tileObject.GetComponent<FileSelectorTile>();
+            Assert.IsNotNull(tile);
+            tiles.Add(tile);
+            MarkTilesDirty();
+            return tile;
+        }
 
-    private IEnumerator RefreshTiledPageDelayed() {
-      yield return null;
-      Transform[] tileTransforms = tiles.Select(tile => tile.TileImage.transform).ToArray();
-      tiledPage.Tiles = tileTransforms;
-      refreshTiledPageCoroutine = null;
-    }
+        private void MarkTilesDirty()
+        {
+            if (refreshTiledPageCoroutine != null)
+            {
+                return;
+            }
 
-    private GameObjectPool GetPool(GameObject prefab, string poolName) {
-      ObjectPoolManager poolManager = ObjectPoolManager.Instance;
-      Assert.IsNotNull(poolManager);
-  
-      GameObjectPool pool =
-        poolManager.GetPool<GameObjectPool>(poolName);
-  
-      if (pool != null) {
-        return pool;
-      }
-  
-      pool = new GameObjectPool(prefab, MaxTileCount * 2);
-      poolManager.AddPool(poolName, pool);
-  
-      return pool;
+            refreshTiledPageCoroutine = StartCoroutine(RefreshTiledPageDelayed());
+        }
+
+        private IEnumerator RefreshTiledPageDelayed()
+        {
+            yield return null;
+            Transform[] tileTransforms = tiles.Select(tile => tile.TileImage.transform).ToArray();
+            tiledPage.Tiles = tileTransforms;
+            refreshTiledPageCoroutine = null;
+        }
+
+        private GameObjectPool GetPool(GameObject prefab, string poolName)
+        {
+            ObjectPoolManager poolManager = ObjectPoolManager.Instance;
+            Assert.IsNotNull(poolManager);
+
+            GameObjectPool pool =
+              poolManager.GetPool<GameObjectPool>(poolName);
+
+            if (pool != null)
+            {
+                return pool;
+            }
+
+            pool = new GameObjectPool(prefab, MaxTileCount * 2);
+            poolManager.AddPool(poolName, pool);
+
+            return pool;
+        }
     }
-  }
 }

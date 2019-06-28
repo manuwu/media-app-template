@@ -26,18 +26,24 @@ namespace Daydream.MediaAppTemplate {
     public enum MediaType {
       Video,
       Photo,
-      Invalid
+      Invalid,
+      Pdf,
     }
 
     public static readonly Dictionary<string, MediaType> EXTENSIONS_TO_MEDIA_TYPE = new Dictionary<string, MediaType>()
     {
-      { ".mp4", MediaType.Video },
-      { ".png", MediaType.Photo },
-      { ".jpg", MediaType.Photo }
+      { "mp4", MediaType.Video },
+      { "png", MediaType.Photo },
+      { "jpg", MediaType.Photo },
+      { "pdf", MediaType.Pdf },
+      { "flv", MediaType.Video },
+      { "f4v", MediaType.Video },
+      { "avi", MediaType.Video },
+
     };
 
-    public static MediaType GetMediaType(FileInfo file) {
-      return GetMediaType(file.Extension);
+    public static MediaType GetMediaType(DVDFileInfo file) {
+      return GetMediaType(file.extension);
     }
 
     public static MediaType GetMediaType(string extension) {

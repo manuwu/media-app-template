@@ -21,8 +21,8 @@ namespace Daydream.MediaAppTemplate {
 
   /// Utilitiy functions for string manipulation.
   public static class StringHelpers {
-    public static void GetNameWithoutExtension(FileInfo file, out StringBuilder name, out StringBuilder extension) {
-      string fullName = file.FullName;
+    public static void GetNameWithoutExtension(DVDFileInfo file, out StringBuilder name, out StringBuilder extension) {
+      string fullName = file.fileUrl;
       int originalLength = fullName.Length;
       int startIndex = 0;
       int length = originalLength;

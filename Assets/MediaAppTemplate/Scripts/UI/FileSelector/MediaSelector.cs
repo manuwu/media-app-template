@@ -21,194 +21,246 @@ using System.Collections.Generic;
 using System.Linq;
 using DaydreamElements.Common;
 
-namespace Daydream.MediaAppTemplate {
+namespace Daydream.MediaAppTemplate
+{
 
-  /// This script instantiates the video player and plays the selected video when
-  /// the file selector is used to select a video file.
-  [RequireComponent(typeof(FileSelectorPageProvider))]
-  public class MediaSelector : MonoBehaviour {
-    [SerializeField]
-    private GameObject mediaSelectorContainer;
+    /// This script instantiates the video player and plays the selected video when
+    /// the file selector is used to select a video file.
+    [RequireComponent(typeof(FileSelectorPageProvider))]
+    public class MediaSelector : MonoBehaviour
+    {
+        [SerializeField]
+        private GameObject mediaSelectorContainer;
 
-    [SerializeField]
-    private GameObject videoPlayerPrefab;
+        [SerializeField]
+        private GameObject videoPlayerPrefab;
 
-    [SerializeField]
-    private GameObject photoPlayerPrefab;
+        [SerializeField]
+        private GameObject photoPlayerPrefab;
 
-    [SerializeField]
-    private MediaScreenController mediaScreenController;
+        [SerializeField]
+        private MediaScreenController mediaScreenController;
 
-    private PagedScrollRect scrollRect;
-    private GameObject currentPlayerObject;
-    private BaseMediaPlayer currentPlayer;
-    private int currentFileIndex = -1;
+        private PagedScrollRect scrollRect;
+        private GameObject currentPlayerObject;
+        private BaseMediaPlayer currentPlayer;
+        private int currentFileIndex = -1;
 
-    private const string PATH_PREFIX = "file://";
-
-    void Awake() {
-      scrollRect = GetComponent<PagedScrollRect>();
-      FileSelectorPageProvider fileSelector = GetComponent<FileSelectorPageProvider>();
-      Assert.IsNotNull(fileSelector);
-      fileSelector.OnFileChosen += OnFileChosen;
-      fileSelector.AllowedExtensions = MediaHelpers.EXTENSIONS_TO_MEDIA_TYPE.Keys.ToArray();
-      MediaPlayerEventDispatcher.OnExitMedia += OnExitMedia;
-      MediaPlayerEventDispatcher.OnNextFile += OnNextFile;
-      MediaPlayerEventDispatcher.OnPreviousFile += OnPreviousFile;
-    }
-
-    void OnDestroy() {
-      FileSelectorPageProvider fileSelector = GetComponent<FileSelectorPageProvider>();
-      if (fileSelector != null) {
-        fileSelector.OnFileChosen -= OnFileChosen;
-      }
-      MediaPlayerEventDispatcher.OnExitMedia -= OnExitMedia;
-      MediaPlayerEventDispatcher.OnNextFile -= OnNextFile;
-      MediaPlayerEventDispatcher.OnPreviousFile -= OnPreviousFile;
-    }
-
-    void Update() {
-      if (scrollRect == null) {
-        return;
-      }
-
-      if (mediaScreenController == null) {
-        return;
-      }
-
-      scrollRect.scrollingEnabled = !mediaScreenController.IsMovingScreen;
-    }
-
-    private void OnFileChosen(FileInfo file, int fileIndex) {
-      MediaHelpers.MediaType mediaType = MediaHelpers.GetMediaType(file);
-
-      if (mediaType == MediaHelpers.MediaType.Invalid) {
-        return;
-      }
-
-      CreateMediaPlayer(mediaType);
-      TryPlayMedia(mediaType, file, currentPlayer);
-
-      mediaSelectorContainer.SetActive(false);
-      currentFileIndex = fileIndex;
-    }
-
-    private void DestroyMediaPlayer() {
-      if (currentPlayerObject != null) {
-        Destroy(currentPlayerObject);
-        mediaSelectorContainer.SetActive(true);
-        currentFileIndex = -1;
-      }
-    }
-
-    private void CreateMediaPlayer(MediaHelpers.MediaType mediaType) {
-      DestroyMediaPlayer();
-
-      switch (mediaType) {
-        case MediaHelpers.MediaType.Video:
-          currentPlayerObject = GameObject.Instantiate(videoPlayerPrefab);
-          BaseVideoPlayer videoPlayer = currentPlayerObject.GetComponentInChildren<BaseVideoPlayer>();
-          currentPlayer = videoPlayer;
-          break;
-        case MediaHelpers.MediaType.Photo:
-          currentPlayerObject = GameObject.Instantiate(photoPlayerPrefab);
-          BasePhotoPlayer photoPlayer = currentPlayerObject.GetComponentInChildren<BasePhotoPlayer>();
-          currentPlayer = photoPlayer;
-          break;
-        default:
-          Debug.LogError("Invalid Media Type.");
-          break;
-      }
-    }
-
-    private static bool TryPlayMedia(MediaHelpers.MediaType mediaType, FileInfo file, BaseMediaPlayer player) {
-      switch (mediaType) {
-        case MediaHelpers.MediaType.Video:
-          BaseVideoPlayer videoPlayer = player as BaseVideoPlayer;
-          if (videoPlayer != null) {
-            PlayOptions options = new PlayOptions();
-            options.Path = PATH_PREFIX + file.FullName;
-            options.Type = BaseVideoPlayer.VideoType.Other;
-            videoPlayer.Play(options);
-            return true;
-          }
-          break;
-        case MediaHelpers.MediaType.Photo:
-          BasePhotoPlayer photoPlayer = player as BasePhotoPlayer;
-          if (photoPlayer != null) {
-            photoPlayer.ShowPhoto(file);
-            return true;
-          }
-          break;
-        default:
-          Debug.LogError("Invalid Media Type.");
-          break;
-      }
-
-      return false;
-    }
-
-    private void OnExitMedia() {
-      DestroyMediaPlayer();
-    }
-
-    private void OnNextFile() {
-      IncrementFile(false);
-    }
-
-    private void OnPreviousFile() {
-      IncrementFile(true);
-    }
-
-    private void IncrementFile(bool previousDirection) {
-      FileSelectorPageProvider fileSelector = GetComponent<FileSelectorPageProvider>();
-      Assert.IsNotNull(fileSelector);
-
-      FileInfo[] files = fileSelector.SubFiles;
-
-      if (files == null || files.Length <= 1) {
-        return;
-      }
-
-      if (currentPlayer == null) {
-        return;
-      }
-
-      if (currentFileIndex == -1) {
-        return;
-      }
-
-      int nextIndex;
-      if (previousDirection) {
-        nextIndex = currentFileIndex - 1;
-      } else {
-        nextIndex = currentFileIndex + 1;
-      }
-
-      if (nextIndex >= files.Length) {
-        nextIndex = 0;
-      } else if (nextIndex < 0) {
-        nextIndex = files.Length - 1;
-      }
-
-      FileInfo nextFile = files[nextIndex];
-      MediaHelpers.MediaType mediaType = MediaHelpers.GetMediaType(nextFile);
-
-      bool success = TryPlayMedia(mediaType, nextFile, currentPlayer);
-
-      // Wrong media player type.
-      if (!success) {
-        CreateMediaPlayer(mediaType);
-        TryPlayMedia(mediaType, nextFile, currentPlayer);
-        PlaybackControlsManager playbackControlsManager =
-          currentPlayerObject.GetComponentInChildren<PlaybackControlsManager>();
-        if (playbackControlsManager != null) {
-          playbackControlsManager.SetPlaybackControlsOpen(true);
+        private const string PATH_PREFIX = "file://";
+        public FileSelectorPageProvider fileSelector;
+        void Awake()
+        {
+            scrollRect = GetComponent<PagedScrollRect>();
+            fileSelector = GetComponent<FileSelectorPageProvider>();
+            Assert.IsNotNull(fileSelector);
+            fileSelector.OnFileChosen += OnFileChosen;
+            //fileSelector.AllowedExtensions = MediaHelpers.EXTENSIONS_TO_MEDIA_TYPE.Keys.ToArray();
+            MediaPlayerEventDispatcher.OnExitMedia += OnExitMedia;
+            MediaPlayerEventDispatcher.OnNextFile += OnNextFile;
+            MediaPlayerEventDispatcher.OnPreviousFile += OnPreviousFile;
+            VideoPlayerControl.GetInstance().QuitPlayer += OnExitMedia;
         }
-      }
 
-      mediaSelectorContainer.SetActive(false);
-      currentFileIndex = nextIndex;
+        void OnDestroy()
+        {
+            fileSelector = GetComponent<FileSelectorPageProvider>();
+            if (fileSelector != null)
+            {
+                fileSelector.OnFileChosen -= OnFileChosen;
+            }
+            MediaPlayerEventDispatcher.OnExitMedia -= OnExitMedia;
+            MediaPlayerEventDispatcher.OnNextFile -= OnNextFile;
+            MediaPlayerEventDispatcher.OnPreviousFile -= OnPreviousFile;
+            VideoPlayerControl.GetInstance().QuitPlayer -= OnExitMedia;
+        }
+
+        void Update()
+        {
+            if (scrollRect == null)
+            {
+                return;
+            }
+
+            if (mediaScreenController == null)
+            {
+                return;
+            }
+
+            scrollRect.scrollingEnabled = !mediaScreenController.IsMovingScreen;
+        }
+
+        private void OnFileChosen(DVDFileInfo file, int fileIndex)
+        {
+            MediaHelpers.MediaType mediaType = MediaHelpers.GetMediaType(file);
+            if (mediaType == MediaHelpers.MediaType.Invalid)
+            {
+                return;
+            }
+            //CreateMediaPlayer(mediaType);
+            //TryPlayMedia(mediaType, file, currentPlayer);
+            if (mediaType == MediaHelpers.MediaType.Video)
+            {
+                VideoPlayerControl.GetInstance().UmpPlayer.Path = file.fileUrl;
+                VideoPlayerControl.GetInstance().UmpPlayer.Play();
+                VideoPlayerControl.GetInstance().playerPanel.SetActive(true);
+                VideoPlayerControl.GetInstance().playerRoot.SetActive(true);
+            }
+            else
+                return;
+
+            mediaSelectorContainer.SetActive(false);
+            currentFileIndex = fileIndex;
+            InvokeRepeating("UpdateProcess", 1f, 1f);
+        }
+
+        void UpdateProcess()
+        {
+            VideoPlayerControl.GetInstance().UpdateProcess();
+        }
+
+        private void DestroyMediaPlayer()
+        {
+            //if (currentPlayerObject != null)
+            //{
+            //    Destroy(currentPlayerObject);
+            //    mediaSelectorContainer.SetActive(true);
+            //    currentFileIndex = -1;
+            //}
+            VideoPlayerControl.GetInstance().playerPanel.SetActive(false);
+            mediaSelectorContainer.SetActive(true);
+            currentFileIndex = -1;
+            VideoPlayerControl.GetInstance().UmpPlayer.Stop();
+            CancelInvoke("UpdateProcess");
+        }
+
+        private void CreateMediaPlayer(MediaHelpers.MediaType mediaType)
+        {
+            DestroyMediaPlayer();
+
+            switch (mediaType)
+            {
+                case MediaHelpers.MediaType.Video:
+                    currentPlayerObject = GameObject.Instantiate(videoPlayerPrefab);
+                    BaseVideoPlayer videoPlayer = currentPlayerObject.GetComponentInChildren<BaseVideoPlayer>();
+                    currentPlayer = videoPlayer;
+                    break;
+                case MediaHelpers.MediaType.Photo:
+                    currentPlayerObject = GameObject.Instantiate(photoPlayerPrefab);
+                    BasePhotoPlayer photoPlayer = currentPlayerObject.GetComponentInChildren<BasePhotoPlayer>();
+                    currentPlayer = photoPlayer;
+                    break;
+                default:
+                    Debug.LogError("Invalid Media Type.");
+                    break;
+            }
+        }
+
+        private static bool TryPlayMedia(MediaHelpers.MediaType mediaType, DVDFileInfo file, BaseMediaPlayer player)
+        {
+            switch (mediaType)
+            {
+                case MediaHelpers.MediaType.Video:
+                    BaseVideoPlayer videoPlayer = player as BaseVideoPlayer;
+                    if (videoPlayer != null)
+                    {
+                        PlayOptions options = new PlayOptions();
+                        options.Path = file.fileUrl;
+                        options.Type = BaseVideoPlayer.VideoType.Other;
+                        videoPlayer.Play(options);
+                        return true;
+                    }
+                    break;
+                case MediaHelpers.MediaType.Photo:
+                    //BasePhotoPlayer photoPlayer = player as BasePhotoPlayer;
+                    //if (photoPlayer != null) {
+                    //  photoPlayer.ShowPhoto(file);
+                    //  return true;
+                    //}
+                    break;
+                default:
+                    Debug.LogError("Invalid Media Type.");
+                    break;
+            }
+
+            return false;
+        }
+
+        private void OnExitMedia()
+        {
+            DestroyMediaPlayer();
+        }
+
+        private void OnNextFile()
+        {
+            IncrementFile(false);
+        }
+
+        private void OnPreviousFile()
+        {
+            IncrementFile(true);
+        }
+
+        private void IncrementFile(bool previousDirection)
+        {
+            fileSelector = GetComponent<FileSelectorPageProvider>();
+            Assert.IsNotNull(fileSelector);
+
+            DVDFileInfo[] files = fileSelector.SubFiles;
+
+            if (files == null || files.Length <= 1)
+            {
+                return;
+            }
+
+            if (currentPlayer == null)
+            {
+                return;
+            }
+
+            if (currentFileIndex == -1)
+            {
+                return;
+            }
+
+            int nextIndex;
+            if (previousDirection)
+            {
+                nextIndex = currentFileIndex - 1;
+            }
+            else
+            {
+                nextIndex = currentFileIndex + 1;
+            }
+
+            if (nextIndex >= files.Length)
+            {
+                nextIndex = 0;
+            }
+            else if (nextIndex < 0)
+            {
+                nextIndex = files.Length - 1;
+            }
+
+            DVDFileInfo nextFile = files[nextIndex];
+            MediaHelpers.MediaType mediaType = MediaHelpers.GetMediaType(nextFile);
+
+            bool success = TryPlayMedia(mediaType, nextFile, currentPlayer);
+
+            // Wrong media player type.
+            if (!success)
+            {
+                CreateMediaPlayer(mediaType);
+                TryPlayMedia(mediaType, nextFile, currentPlayer);
+                PlaybackControlsManager playbackControlsManager =
+                  currentPlayerObject.GetComponentInChildren<PlaybackControlsManager>();
+                if (playbackControlsManager != null)
+                {
+                    playbackControlsManager.SetPlaybackControlsOpen(true);
+                }
+            }
+
+            mediaSelectorContainer.SetActive(false);
+            currentFileIndex = nextIndex;
+        }
     }
-  }
 }
