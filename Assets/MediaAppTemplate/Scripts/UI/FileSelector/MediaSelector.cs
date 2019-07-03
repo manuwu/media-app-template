@@ -48,6 +48,15 @@ namespace Daydream.MediaAppTemplate
 
         private const string PATH_PREFIX = "file://";
         public FileSelectorPageProvider fileSelector;
+
+        [SerializeField]
+        private SvrVideoPlayerDemo VideoPlayerDemo;
+
+        [SerializeField]
+        private SvrVideoControlPanel VideoControlPanel;
+
+        [SerializeField]
+        private GameObject PlayerRoot;
         void Awake()
         {
             scrollRect = GetComponent<PagedScrollRect>();
@@ -58,7 +67,7 @@ namespace Daydream.MediaAppTemplate
             MediaPlayerEventDispatcher.OnExitMedia += OnExitMedia;
             MediaPlayerEventDispatcher.OnNextFile += OnNextFile;
             MediaPlayerEventDispatcher.OnPreviousFile += OnPreviousFile;
-            VideoPlayerControl.GetInstance().QuitPlayer += OnExitMedia;
+            VideoControlPanel.QuitPlayer += OnExitMedia;
         }
 
         void OnDestroy()
@@ -71,7 +80,7 @@ namespace Daydream.MediaAppTemplate
             MediaPlayerEventDispatcher.OnExitMedia -= OnExitMedia;
             MediaPlayerEventDispatcher.OnNextFile -= OnNextFile;
             MediaPlayerEventDispatcher.OnPreviousFile -= OnPreviousFile;
-            VideoPlayerControl.GetInstance().QuitPlayer -= OnExitMedia;
+            VideoControlPanel.QuitPlayer -= OnExitMedia;
         }
 
         void Update()
@@ -100,22 +109,15 @@ namespace Daydream.MediaAppTemplate
             //TryPlayMedia(mediaType, file, currentPlayer);
             if (mediaType == MediaHelpers.MediaType.Video)
             {
-                VideoPlayerControl.GetInstance().UmpPlayer.Path = file.fileUrl;
-                VideoPlayerControl.GetInstance().UmpPlayer.Play();
-                VideoPlayerControl.GetInstance().playerPanel.SetActive(true);
-                VideoPlayerControl.GetInstance().playerRoot.SetActive(true);
+                PlayerRoot.SetActive(true);
+                SvrVideoPlayerDemo.currentVideoUrl= file.fileUrl;
+                VideoPlayerDemo.PlayVideoByIndex();
             }
             else
                 return;
 
             mediaSelectorContainer.SetActive(false);
             currentFileIndex = fileIndex;
-            InvokeRepeating("UpdateProcess", 1f, 1f);
-        }
-
-        void UpdateProcess()
-        {
-            VideoPlayerControl.GetInstance().UpdateProcess();
         }
 
         private void DestroyMediaPlayer()
@@ -126,11 +128,9 @@ namespace Daydream.MediaAppTemplate
             //    mediaSelectorContainer.SetActive(true);
             //    currentFileIndex = -1;
             //}
-            VideoPlayerControl.GetInstance().playerPanel.SetActive(false);
             mediaSelectorContainer.SetActive(true);
             currentFileIndex = -1;
-            VideoPlayerControl.GetInstance().UmpPlayer.Stop();
-            CancelInvoke("UpdateProcess");
+            VideoPlayerDemo.Stop();
         }
 
         private void CreateMediaPlayer(MediaHelpers.MediaType mediaType)

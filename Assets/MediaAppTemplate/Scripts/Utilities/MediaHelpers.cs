@@ -39,6 +39,7 @@ namespace Daydream.MediaAppTemplate {
       { "flv", MediaType.Video },
       { "f4v", MediaType.Video },
       { "avi", MediaType.Video },
+      { "MP4", MediaType.Video },
 
     };
 

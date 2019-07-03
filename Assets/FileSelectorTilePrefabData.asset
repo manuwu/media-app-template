@@ -15,8 +15,4 @@ MonoBehaviour:
     type: 2}
   defaultFilePrefab: {fileID: 1000012703230040, guid: 32776b67cca5b42259213fa70dcc6832,
     type: 2}
-  extentionsToPrefabs:
-  - extension: mp4
-    prefab: {fileID: 1000010321021040, guid: 0fe56589cc18f495baabb6a2d1ac274e, type: 2}
-  - extension: png
-    prefab: {fileID: 1000012703230040, guid: 32776b67cca5b42259213fa70dcc6832, type: 2}
+  extentionsToPrefabs: []

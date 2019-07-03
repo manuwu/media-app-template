@@ -157,7 +157,6 @@ namespace Daydream.MediaAppTemplate
 
         public void Select()
         {
-            Debug.Log("33333333333333Select");
             if (directory.javaObj != null && OnDirectorySelected != null)
             {
                 Debug.Log("444444444444Select");
@@ -165,7 +164,7 @@ namespace Daydream.MediaAppTemplate
             }
             else if (file.javaObj != null && OnFileSelected != null)
             {
-                Debug.Log("5555555555Select");
+                Debug.Log("5555555555Select"+ file.fileUrl);
                 OnFileSelected(file, fileIndex);
             }
         }

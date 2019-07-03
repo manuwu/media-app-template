@@ -237,7 +237,6 @@ namespace Daydream.MediaAppTemplate
                 //} else {
                 files = workingDirectory.GetFiles();
             }
-            Debug.Log("8888888888888888+Refresh");
             childCount = directories.Length + files.Length;
             pageCount = Mathf.CeilToInt((float)childCount / (float)MaxChildrenPerPage);
             pageCount = Mathf.Max(pageCount, 1);
@@ -252,7 +251,6 @@ namespace Daydream.MediaAppTemplate
 
         private void OnDirectorySelected(DVDDirectoryInfo directory)
         {
-            Debug.Log("666666666666OnDirectorySelected");
             WorkingDirectory = directory;
             BreadcrumbData breadcrumbData = new BreadcrumbData();
             breadcrumbData.displayName = directory.name;
