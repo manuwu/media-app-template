@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <!-- Cinema -->
+  <!-- Video -->
+  <!-- List -->
+  <string name ="Cinema.CinemaPanel.LocalVideosPanel.TopPanel.Title">视频播放器</string>
+  <string name ="Cinema.CinemaPanel.LocalVideosPanel.VideoCheckBtn.Text">视频</string>
+  <string name ="Cinema.CinemaPanel.LocalVideosPanel.ImageCheckBtn.Text">图片</string>
+  <string name ="Cinema.CinemaPanel.LocalVideosPanel.ApkCheckBtn.Text">安装包</string>
+
+  <string name ="Cinema.CinemaPanel.LocalVideosPanel.SortBtn.SortByTimeBtn.Text">时间</string>
+  <string name ="Cinema.CinemaPanel.LocalVideosPanel.SortBtn.SortByNameBtn.Text">名称</string>
+  <string name ="Cinema.CinemaPanel.LocalVideosPanel.SortBtn.SortBySizeBtn.Text">大小</string>
+
+  <string name ="Cinema.CinemaPanel.LocalVideosPanel.StatisticsPanel.TotalVideoCountHintText">视频数量：</string>
+
+  <string name ="Cinema.CinemaPanel.LocalVideosPanel.NoVideoHintPanel.Title.Text">没有视频文件</string>
+  <string name ="Cinema.CinemaPanel.LocalVideosPanel.NoVideoHintPanel.Content.Text">没有视频文件，请先将头显通过USB数据线连接至PC\n进入头显磁盘驱动器「Skyworth VR」\n并将视频文件拷入其中的「Movies」文件夹</string>
+
+  <string name ="Cinema.CinemaPanel.LocalVideosPanel.StatisticsPanel.EditButton.Text">编辑</string>
+
+  <string name ="Cinema.MoreInfoPanel.TopPanel.StorageSizeHint.Text">大小：</string>
+  <string name ="Cinema.MoreInfoPanel.TopPanel.TimeHint.Text">时长：</string>
+  <string name ="Cinema.MoreInfoPanel.DeleteVideoBtn.Video.Text">删除视频</string>
+  <string name ="Cinema.MoreInfoPanel.DeleteVideoBtn.Image.Text">删除图片</string>
+  <string name ="Cinema.MoreInfoPanel.DeleteVideoBtn.Apk.Text">删除APK</string>
+
+  <string name ="Cinema.DeleteVideoPanel.Content.Text">确定要删除吗？此操作不能撤销</string>
+  <string name ="Cinema.DeleteVideoPanel.CancelBtn.Text">取消</string>
+  <string name ="Cinema.DeleteVideoPanel.ExitButton.Text">退出</string>
+  <string name ="Cinema.DeleteVideoPanel.ConfirmBtn.Text">删除</string>
+
+  <string name ="Cinema.DeleteLoadingPanel.Title.Video.Text">正在删除视频...</string>
+  <string name ="Cinema.DeleteLoadingPanel.Title.Image.Text">正在删除图片...</string>
+  <string name ="Cinema.DeleteLoadingPanel.Title.Apk.Text">正在删除APK...</string>
+
+  <string name ="Cinema.ApkInstallPanel.Size.Text">大小：</string>
+  <string name ="Cinema.ApkInstallPanel.Version.Text">版本号：</string>
+  <string name ="Cinema.ApkInstallPanel.ConfirmBtn.Text">安装</string>
+  <string name ="Cinema.ApkProgressPanel.Content.Text">安装中...</string>
+  <string name ="Cinema.ApkVersionErrorPanel.Content.Text">安装包版本过低</string>
+  <string name ="Cinema.ApkVersionErrorPanel.CancelBtn.Text">返回</string>
+  <string name ="Cinema.ApkInstallFaildPanel.Content.Text">安装失败</string>
+  <string name ="Cinema.ApkInstallSuccessPanel.Content.Text">安装成功，在“应用库”下可以打开该应用</string>
+  <string name ="Cinema.ApkInstallSuccessPanel.ConfirmBtn.Text">打开</string>
+
+  <string name ="Cinema.LocalVideosPanel.OnExceptionEvent.DeleteFailed">删除失败</string>
+
+  <!-- Player -->
+  <string name ="Cinema.VideoPlayerPanel.VariablePanel.StereoTypePanel.StereoTypeTitle.Text">3D</string>
+  <string name ="Cinema.VideoPlayerPanel.VariablePanel.StereoTypePanel.ProjectionTypeTitle.Text">全景模式</string>
+  <string name ="Cinema.VideoPlayerPanel.VariablePanel.StereoTypePanel.ST2DBtn.Text">2D</string>
+  <string name ="Cinema.VideoPlayerPanel.VariablePanel.StereoTypePanel.ST3DLRBtn.Text">3D左右</string>
+  <string name ="Cinema.VideoPlayerPanel.VariablePanel.StereoTypePanel.ST3DTBBtn.Text">3D上下</string>
+  <string name ="Cinema.VideoPlayerPanel.VariablePanel.StereoTypePanel.PTMonoBtn.Text">窗口</string>
+  <string name ="Cinema.VideoPlayerPanel.VariablePanel.StereoTypePanel.PT180Btn.Text">180度</string>
+  <string name ="Cinema.VideoPlayerPanel.VariablePanel.StereoTypePanel.PT360Btn.Text">360度</string>
+  <string name ="Cinema.VideoPlayerPanel.VariablePanel.StereoTypePanel.TensilePanel.NoteText">拉伸画面</string>
+  <string name ="Cinema.VideoPlayerPanel.VariablePanel.LoadingImage.Text">加载中...</string>
+
+  <string name ="Cinema.SvrVideoPlayer.OnExceptionEvent.Video.PathError">糟糕，视频走丢了。</string>
+  <string name ="Cinema.SvrVideoPlayer.OnExceptionEvent.Video.OtherError">糟糕，出错了！请重试。</string>
+  <string name ="Cinema.SvrVideoPlayer.OnExceptionEvent.Video.NOT_SUPPORT">抱歉，视频播放失败。</string>
+  <string name ="Cinema.SvrVideoPlayer.OnExceptionEvent.Video.NotBestSize">视频可能略有卡顿或不能播放</string>
+  <string name ="Cinema.SvrVideoPlayer.OnExceptionEvent.Video.NETWORK_ERROR">网络不通喽~请检查网络连接</string>
+  <string name ="Cinema.SvrVideoPlayer.OnExceptionEvent.Video.KTTV_IPLIMIT">因版权原因，您所在的区域无法观看本片</string>
+  <string name ="Cinema.SvrVideoPlayer.OnExceptionEvent.Video.KTTV_LOGIN">您登录的设备已达上限，请在其他设备退出登录</string>
+  <string name ="Cinema.SvrVideoPlayer.OnExceptionEvent.Video.KTTV_PLAYER_ERROR">播放错误，请联系客服</string>
+  <string name ="Cinema.SvrVideoPlayer.OnExceptionEvent.Video.PlayerComplete">播放结束</string>
+
+
+  <string name ="Cinema.SvrVideoPlayer.VideoControlPanel.BackBtn.Text">退出</string>
+  <string name ="Cinema.SvrVideoPlayer.VideoControlPanel.VolumeBtn.Text">音量</string>
+  <string name ="Cinema.SvrVideoPlayer.VideoControlPanel.PlayBtn.Text">播放</string>
+  <string name ="Cinema.SvrVideoPlayer.VideoControlPanel.PlayBtn.RePlay.Text">重播</string>
+  <string name ="Cinema.SvrVideoPlayer.VideoControlPanel.PauseBtn.Text">暂停</string>
+  <string name ="Cinema.SvrVideoPlayer.VideoControlPanel.NextBtn.Text">下一首</string>
+  <string name ="Cinema.SvrVideoPlayer.VideoControlPanel.FocusBtn.Text">视角调节</string>
+  <string name ="Cinema.SvrVideoPlayer.VideoControlPanel.LockBtn.Text">视角锁定</string>
+  <string name ="Cinema.SvrVideoPlayer.VideoControlPanel.SettingBtn.Text">设置</string>
+
+  <string name ="Cinema.SvrVideoPlayer.ImageControlPanel.NextBtn.Text">下一张</string>
+
+  <string name ="Cinema.VideoPlayerPanel.VariablePanel.SettingsPanel.ScreenSizeBtn.Text">屏幕尺寸</string>
+  <string name ="Cinema.VideoPlayerPanel.VariablePanel.SettingsPanel.PlayTypeBtn.Text">模式选择</string>
+  <string name ="Cinema.VideoPlayerPanel.VariablePanel.SettingsPanel.SceneChangeBtn.Text">场景选择</string>
+  <string name ="Cinema.VideoPlayerPanel.VariablePanel.SettingsPanel.LoopModeBtn.Text">播放模式</string>
+
+  <string name ="Cinema.VideoPlayerPanel.VariablePanel.ScreenSizePanel.Title.Text">屏幕尺寸</string>
+  <string name ="Cinema.VideoPlayerPanel.VariablePanel.SceneChangePanel.Title.Text">场景选择</string>
+  <string name ="Cinema.VideoPlayerPanel.VariablePanel.LoopModePanel.Title.Text">播放模式</string>
+  <string name ="Cinema.VideoPlayerPanel.VariablePanel.DefinitionPanel.Title.Text">清晰度</string>
+
+  <string name ="Cinema.VideoPlayerPanel.VariablePanel.ScreenSizePanel.CinemaBtn.Text">较大</string>
+  <string name ="Cinema.VideoPlayerPanel.VariablePanel.ScreenSizePanel.StandardBtn.Text">标准</string>
+
+  <string name ="Cinema.VideoPlayerPanel.VariablePanel.SceneChangePanel.HomeTheaterBtn.Text">太空舱</string>
+  <string name ="Cinema.VideoPlayerPanel.VariablePanel.SceneChangePanel.StarrySkyBtn.Text">午夜星空</string>
+  <string name ="Cinema.VideoPlayerPanel.VariablePanel.SceneChangePanel.ImaxTheaterBtn.Text">IMAX</string>
+  <string name ="Cinema.VideoPlayerPanel.VariablePanel.SceneChangePanel.DriveBtn.Text">汽车影院</string>
+
+  <string name ="Cinema.VideoPlayerPanel.VariablePanel.LoopModePanel.SingleCycleBtn.Text">单曲循环</string>
+  <string name ="Cinema.VideoPlayerPanel.VariablePanel.LoopModePanel.AutoPlayBtn.Text">自动播放</string>
+
+  <string name ="Cinema.VideoPlayerPanel.VariablePanel.DefinitionPanel.FHDBtn.Text">蓝光 1080P</string>
+  <string name ="Cinema.VideoPlayerPanel.VariablePanel.DefinitionPanel.SHDBtn.Text">超清 720P</string>
+  <string name ="Cinema.VideoPlayerPanel.VariablePanel.DefinitionPanel.HDBtn.Text">高清 480P</string>
+  <string name ="Cinema.VideoPlayerPanel.VariablePanel.DefinitionPanel.AutoBtn.Text">自动 {0}</string>
+
+  <string name ="Cinema.VideoPlayerPanel.VariablePanel.DefinitionPanel.StartChangeDefinition">正在为您切换至{0}，请稍后...</string>
+  <string name ="Cinema.VideoPlayerPanel.VariablePanel.DefinitionPanel.ChangeDefinitionSuccess">您已切换至{0}</string>
+  <string name ="Cinema.VideoPlayerPanel.VariablePanel.DefinitionPanel.ChangeDefinitionFailed">很抱歉，出了点问题，欢迎反馈</string>
+
+  <string name ="Cinema.VideoControlPanel.FocusBtn.Toast">移动头部调整视角后按确认键</string>
+  <string name ="Cinema.Recentered.Toast">长按Home键回正视角</string>
+  <string name ="Cinema.LockAngle.Quit.Toast">可以按确认键取消视角锁定</string>
+
+  <string name ="Cinema.VideoPlayerPanel.VariablePanel.DriveSceneCheck.Karting">卡丁车</string>
+  <string name ="Cinema.VideoPlayerPanel.VariablePanel.DriveSceneCheck.Rattletrap">老爷车</string>
+  <string name ="Cinema.VideoPlayerPanel.VariablePanel.DriveSceneCheck.King">皇帝位</string>
+  <string name ="Cinema.VideoPlayerPanel.VariablePanel.DriveSceneCheck.Playboy">花花公子</string>
+  
+  <!-- Image -->
+  <!-- List -->
+  <string name ="Cinema.CinemaPanel.LocalVideosPanel.NoPictureHintPanel.Title.Text">没有图片文件</string>
+  <string name ="Cinema.CinemaPanel.LocalVideosPanel.NoPictureHintPanel.Content.Text">没有图片文件，请先将头显通过USB数据线连接至PC\n进入头显磁盘驱动器「Skyworth VR」\n并将图片文件拷入其中的「Pictures」文件夹</string>
+
+  <string name ="Cinema.CinemaPanel.LocalVideosPanel.StatisticsPanel.TotalImageCountHintText">图片数量：</string>
+
+  <string name ="Cinema.SvrVideoPlayer.OnExceptionEvent.Picture.PathError">该图片不存在</string>
+  <string name ="Cinema.SvrVideoPlayer.OnExceptionEvent.Picture.OtherError">不支持该图片</string>
+
+
+  <!-- Apk -->
+  <!-- List -->
+  <string name ="Cinema.CinemaPanel.LocalVideosPanel.NoApkHintPanel.Title.Text">没有安装包文件</string>
+  <string name ="Cinema.CinemaPanel.LocalVideosPanel.NoApkHintPanel.Content.Text">没有安装包文件，请先将头显通过USB数据线连接至PC\n进入头显磁盘驱动器「Skyworth VR」\n并将安装包文件拷入其中的「APK」文件夹</string>
+
+  <string name ="Cinema.CinemaPanel.LocalVideosPanel.StatisticsPanel.TotalApkCountHintText">安装包数量：</string>
+
+
+  <!-- Launcher -->
+  <!-- CastScreen -->
+  <string name ="Launcher.CastScreenPanel.Top.Title.Text">投射</string>
+  <string name ="Launcher.CastScreenPanel.CastScreenWifiSwitchPanel.Bottom.InfoPanel.Content.Text">使用投射需要先开启WiFi</string>
+  <string name ="Launcher.CastScreenPanel.CastScreenWifiSwitchPanel.Bottom.OpenWIFIBtn.Text.Text">开启WiFi</string>
+  <string name ="Launcher.CastScreenPanel.CastScreenNotFoundPanel.Bottom.InfoPanel.Content.Text">没有发现可投射设备</string>
+  <string name ="Launcher.CastScreenPanel.CastScreenNotFoundPanel.Bottom.SearchAgainBtn.Text.Text">重新查找</string>
+  <string name ="Launcher.CastScreenPanel.CastScreenSearchingDevicesPanel.Bottom.Content.Text">正在查找设备...</string>
+  <string name ="Launcher.CastScreenPanel.CastScreenConnectedPanel.Bottom.ConnectedDevice.ConnectInfo.Text">已连接</string>
+  <string name ="Launcher.CastScreenPanel.CastScreenConnectedPanel.Bottom.ConnectedDevice.DisconnectBtn.Reminder.ReminderText.Text">断开</string>
+  <string name ="Launcher.CastScreenPanel.CastScreenDeviceListPanel.WfdDevice.ConnectInfo.Text">正在连接...</string>
+
+  <!-- Setting -->
+  <!-- ClockPanel -->
+  <string name ="Launcher.SettingPanel.ClockPanel.Month.Month.1">1月</string>
+  <string name ="Launcher.SettingPanel.ClockPanel.Month.Month.2">2月</string>
+  <string name ="Launcher.SettingPanel.ClockPanel.Month.Month.3">3月</string>
+  <string name ="Launcher.SettingPanel.ClockPanel.Month.Month.4">4月</string>
+  <string name ="Launcher.SettingPanel.ClockPanel.Month.Month.5">5月</string>
+  <string name ="Launcher.SettingPanel.ClockPanel.Month.Month.6">6月</string>
+  <string name ="Launcher.SettingPanel.ClockPanel.Month.Month.7">7月</string>
+  <string name ="Launcher.SettingPanel.ClockPanel.Month.Month.8">8月</string>
+  <string name ="Launcher.SettingPanel.ClockPanel.Month.Month.9">9月</string>
+  <string name ="Launcher.SettingPanel.ClockPanel.Month.Month.10">10月</string>
+  <string name ="Launcher.SettingPanel.ClockPanel.Month.Month.11">11月</string>
+  <string name ="Launcher.SettingPanel.ClockPanel.Month.Month.12">12月</string>
+  <string name ="Launcher.SettingPanel.ClockPanel.Month.Day">日</string>
+
+  <string name ="Launcher.SettingPanel.ClockPanel.Time.Week.Monday">星期一</string>
+  <string name ="Launcher.SettingPanel.ClockPanel.Time.Week.Tuesday">星期二</string>
+  <string name ="Launcher.SettingPanel.ClockPanel.Time.Week.Wednesday">星期三</string>
+  <string name ="Launcher.SettingPanel.ClockPanel.Time.Week.Thursday">星期四</string>
+  <string name ="Launcher.SettingPanel.ClockPanel.Time.Week.Friday">星期五</string>
+  <string name ="Launcher.SettingPanel.ClockPanel.Time.Week.Saturday">星期六</string>
+  <string name ="Launcher.SettingPanel.ClockPanel.Time.Week.Sunday">星期天</string>
+
+  <string name ="Launcher.SettingPanel.ClockPanel.BatteryPower.Text">当前电量</string>
+
+  <!-- SettingMenuPanel -->
+  <string name ="Launcher.SettingPanel.SettingMenuPanel.WifiBtn.Text.WifiSwitchText.Text.Closed">未打开</string>
+  <string name ="Launcher.SettingPanel.SettingMenuPanel.WifiBtn.Text.WifiSwitchText.Text.Disconnected">未连接</string>
+
+  <string name ="Launcher.SettingPanel.SettingMenuPanel.AdjustBtn.Text.Text">调节</string>
+  <string name ="Launcher.SettingPanel.SettingMenuPanel.MoreBtn.Text.Text">更多</string>
+  <string name ="Launcher.SettingPanel.SettingMenuPanel.BluetoothBtn.Text.Text">蓝牙</string>
+  <string name ="Launcher.SettingPanel.SettingMenuPanel.UpdateBtn.Text.Text">更新</string>
+
+  <!-- WifiPanel -->
+  <string name ="Launcher.SettingPanel.WifiPanel.WifiSwitchPanel.Bottom.Hint.Text">WiFi链接未打开</string>
+  <string name ="Launcher.SettingPanel.WifiPanel.WifiSwitchPanel.Bottom.OpenWifiBtn.Text">点我打开</string>
+<string name ="Launcher.SettingPanel.WifiPanel.WifiSearchPanel.Bottom.Content.Text">正在查找附近的WiFi...</string>
+
+  <string name ="Launcher.SettingPanel.WifiPanel.WifiNotFoundPanel.Bottom.Hint.Text">当前无可用网络</string>
+  <string name ="Launcher.SettingPanel.WifiPanel.WifiNotFoundPanel.Bottom.SearchAgainBtn.Text">点我刷新</string>
+
+  <string name ="Launcher.SettingPanel.WifiPanel.WifiListPanel.WifiDevice.WifiStatus.Saved">已保存</string>
+  <string name ="Launcher.SettingPanel.WifiPanel.WifiListPanel.WifiDevice.WifiStatus.Using">已连接</string>
+  <string name ="Launcher.SettingPanel.WifiPanel.WifiListPanel.WifiDevice.WifiConnectStatus.Connecting">正在连接</string>
+  <string name ="Launcher.SettingPanel.WifiPanel.WifiListPanel.WifiDevice.ErrorMessage.IncorrectPassword">WiFi密码错误</string>
+  <string name ="Launcher.SettingPanel.WifiPanel.WifiListPanel.WifiDevice.ErrorMessage.ValidationError">发生验证错误</string>
+  <string name ="Launcher.SettingPanel.WifiPanel.WifiListPanel.WifiDevice.PwdInputPlaceholder.Text">密码</string>
+  <string name ="Launcher.SettingPanel.WifiPanel.WifiListPanel.WifiDevice.ForgetBtn.Name.Text">忘记</string>
+
+<string name ="Launcher.SettingPanel.WifiPanel.WifiConnectPanel.ErrorMessage.Overlength">超出最大长度</string>
+  <string name ="Launcher.SettingPanel.WifiPanel.WifiConnectPanel.CancelBtn.Text">取消</string>
+  <string name ="Launcher.SettingPanel.WifiPanel.WifiConnectPanel.ConnectBtn.Text">连接</string>
+
+  <string name ="Launcher.SettingPanel.WifiPanel.WifiForgetPanel.Text">要断开并忘记该网络吗</string>
+  <string name ="Launcher.SettingPanel.WifiPanel.WifiForgetPanel.CancelBtn.Text">取消</string>
+  <string name ="Launcher.SettingPanel.WifiPanel.WifiForgetPanel.ConfirmBtn.Text">确认</string>
+
+  <string name ="Launcher.SettingPanel.WifiPanel.WifiConnectTimeOutPanel.Hint.Text">网络连接超时</string>
+<!-- AdjustPanel -->
+      <string name ="Launcher.SettingPanel.AdjustPanel.TopPanel.Title.Text">调节</string>
+      <string name ="Launcher.SettingPanel.AdjustPanel.VolumePanel.HintText.Text">音量</string>
+      <string name ="Launcher.SettingPanel.AdjustPanel.LightPanel.HintText.Text">亮度</string>
+      <string name ="Launcher.SettingPanel.AdjustPanel.HandlePanel.HintText.Text">惯用手</string>
+      <string name ="Launcher.SettingPanel.AdjustPanel.HandlePanel.LeftHandle.Text">左手</string>
+      <string name ="Launcher.SettingPanel.AdjustPanel.HandlePanel.RightHandle.Text">右手</string>
+      <string name ="Launcher.SettingPanel.AdjustPanel.ProtectPanel.Text">护眼模式</string>
+      <string name ="Launcher.SettingPanel.AdjustPanel.ProtectPanel.On.Text">开</string>
+      <string name ="Launcher.SettingPanel.AdjustPanel.ProtectPanel.Off.Text">关</string>
+
+  <!-- UninstallPanel -->
+  <string name ="Launcher.UninstallPanel.TopPanel.StorageSizeKey.Text">大小:</string>
+  <string name ="Launcher.UninstallPanel.TopPanel.VersionKey.Text">版本:</string>
+  <string name ="Launcher.UninstallPanel.UninstallBtn.Text.Text">卸载 app</string>
+
+  <string name ="Launcher.UninstallConfirmPanel.Content.Text">您确定要卸载吗？</string>
+  <string name ="Launcher.UninstallConfirmPanel.CancelBtn.Text">取消</string>
+  <string name ="Launcher.UninstallConfirmPanel.ConfirmBtn.Text">卸载</string>
+
+<string name ="AppManager.DeleteDialog.Message.Format">你确定要卸载“{0}”吗？</string>
+  <string name ="AppManager.DeleteDialog.Button.OK">确认</string>
+  <string name ="AppManager.DeleteDialog.Button.Cancel">取消</string>
+  <string name ="AppManager.Delete.Uninstall">卸载</string>
+  <string name ="AppManager.Delete.Cancel.Uninstall">取消</string>
+  <string name="Update.title">系统更新</string>
+  <string name="Update.version.Format">当前版本号:{0}</string>
+  <string name="Update.CheckUpdate.Button">检查更新</string>
+  <string name="Update.CheckUpdate.Loading">正在检查更新...</string>
+  <string name="Update.CurrentIsNew">系统已是最新</string>
+  <string name="Update.Sure">确定</string>
+  <string name="Update.Detail.Cancel">取消</string>
+  <string name="Update.Detail.DownLoad">下载</string>
+  <string name="Update.ReadyToDload">准备下载更新...</string>
+  <string name="Update.Description">\n\n&lt;size=28&gt;&lt;color=#2B69D2FF&gt;SkyUI: {0}&lt;/color&gt;&lt;/size&gt;\n\n版本亮点\n{1}</string>
+  <string name="Update.DownLoading.Format">正在下载... {0}%</string>
+  <string name="Update.DownLoad.NetException">网络异常，下载已暂停</string>
+  <string name="Update.DownLoad.SpaceException">空间不足，下载已暂停</string>
+  <string name="Update.DownLoadCompleted.Version.Format">已下载：{0}</string>
+  <string name="Update.DownLoadCompleted.LowPower">电量不足50%，请充电后安装更新</string>
+  <string name="Update.DownLoadCompleted.Install">安装</string>
+  <string name="Update.DownLoadCompleted.InstallWarning">安装期间无法进行操作</string>
+  <string name="Update.Dialog.Update">更新</string>
+  <string name="Update.Dialog.Ignore">忽略</string>
+  <string name="Update.Dialog.Text">发现新版本，是否立即更新？</string>
+  <string name="Update.Dialog.TextForce">为了优化用户体验，我们做了重要的功能优化，请及时更新系统。</string>
+  <string name="Launcher.Home">主页</string>
+  <string name="Lancher.Library">应用库</string>
+  <string name="ShutDown.Cancel">返回</string>
+  <string name="ShutDown.ShutDown">关机</string>
+  <string name="ShutDown.Reboot">重启</string>
+  <string name="ShutDown.Set">设置</string>
+  <string name="ShutDown.FileManager">文件管理</string>
+  <string name="AotuRun.Dialog.SetAotu">确定选择{0}为自启动应用吗？</string>
+  <string name="AotuRun.Dialog.ResetAotu">确定取消{0}为自启动应用吗？</string>
+  <string name="AotuRun.Dialog.Reboot">是否立即重启？</string>
+  <string name="SvrToggle_Run.ButtonOpen.Text">自启动</string>
+  <string name="SvrToggle_Run.ButtonClose.Text">取消</string>
+  <string name="Handle.Home.Key">Home键</string>
+  <string name="Handle.Volume">没有发现手柄，点击头戴设备上的“音量+键”配对新手柄</string>
+  <string name="Handle.OpenDevice">短按手柄Home键3秒开机</string>
+  <string name="Handle.GazeMode">使用头控模式进入系统</string>
+  <string name="Handle.APPKey">APP键</string>
+  <string name="Handle.HOMEKey">HOME键</string>
+  <string name="Handle.VolumeKey">音量键</string>
+  <string name="Handle.PowerKey">电源键</string>
+  <string name="Handle.BackKey">返回键</string>
+  <string name="Handle.SubmitKey">确认键</string>
+  <string name="Handle.ContinueButton.Text">跳过</string>
+  <string name="Handle.KnowButton.Text">我知道了</string>
+  <string name="Handle.GazeMode.Warning">注意：可以点击状态栏的手柄    连接手柄</string>
+  <string name="Handle.Pairing.Title">手柄开机后同时按住Home键+App键配对</string>
+  <string name="Handle.Recent.Title">将手柄对准前方并长按Home键继续</string>
+  <string name="Setting.HandleManager.Title">手柄管理</string>
+  <string name="Setting.HandleManager.Connected">已连接</string>
+  <string name="Setting.HandleManager.DisConnected">未连接</string>
+  <string name="Setting.HandleManager.Scan">扫描</string>
+  <string name="Setting.HandleManager.ShutDown">断开</string>
+  <string name="Setting.HandleManager.ConnectedState">连接状态</string>
+  <string name="Setting.HandleManager.Tips">手柄连接后，请短按手柄HOME键唤醒手柄</string>
+  <string name="Handle.Scaning">扫描中...</string>
+  <string name="Handle.Scaning.Fail">未扫描到相关设备</string>
+  <string name="Handle.Scaning.Tips">提示：10秒未检测到设备则会重新配对</string>
+  <string name="Need3DOF.Toast">请先连接适配的手柄</string>
+
+  <!-- SkyNewUI-->
+  <string name ="Launcher.LocalPanel.ApkPanel.CancelBtn.Text">否</string>
+  <string name ="Launcher.LocalPanel.ApkPanel.ConfirmBtn.Text">是</string>
+  <string name ="Launcher.LocalPanel.ApkPanel.Content.Text">是否立即安装“{0}”？</string>
+  <string name ="Launcher.LocalPanel.AppPanel.Content.Text">是否删除“{0}”？</string>
+
+  <string name ="Launcher.LocalPanel.AppPanel.ToastPanel.Text.UninstallFailed">“{0}”删除失败，请重新尝试</string>
+  <string name ="Launcher.LocalPanel.AppPanel.ToastPanel.Text.UninstallSuccess">“{0}”删除成功</string>
+  <string name ="Launcher.LocalPanel.AppPanel.ToastPanel.Text.CannotUninstall">“{0}”不支持删除</string>
+  <string name ="Launcher.LocalPanel.AppPanel.ToastPanel.Text.DeleteSuccess">删除成功</string>
+  <string name ="Launcher.LocalPanel.AppPanel.ToastPanel.Text.InstallSuccess">“{0}”安装成功，请到本地【应用】查看</string>
+  <string name ="Launcher.LocalPanel.AppPanel.ToastPanel.Text.InstallFailed">“{0}”安装失败</string>
+  <string name ="Launcher.LocalPanel.AppPanel.ToastPanel.Text.Installing">正在为您静默安装“{0}”...</string>
+
+  <string name ="Launcher.SettingPanel.BluetoothPanel.BluetoothSwitchPanel.Title">蓝牙</string>
+  <string name ="Launcher.SettingPanel.BluetoothPanel.BluetoothSwitchPanel.Hint">蓝牙未打开</string>
+  <string name ="Launcher.SettingPanel.BluetoothPanel.BluetoothSwitchPanel.OpenBtn.Text">打开蓝牙</string>
+  <string name ="Launcher.SettingPanel.BluetoothPanel.BluetoothForgetPanel.Hint">断开或忽略此蓝牙设备</string>
+  <string name ="Launcher.SettingPanel.BluetoothPanel.BluetoothListPanel.MyBluetoothDevice">我的设备</string>
+  <string name ="Launcher.SettingPanel.BluetoothPanel.BluetoothListPanel.OtherBluetoothDevice">其他设备</string>
+  <string name ="Launcher.SettingPanel.BluetoothPanel.BluetoothListPanel.Toast">无可用蓝牙设备</string>
+  <string name ="Launcher.SettingPanel.BluetoothPanel.BluetoothDevice.ConnectText">未连接</string>
+  <string name ="Launcher.SettingPanel.BluetoothPanel.BluetoothDevice.ConnectingText">连接中</string>
+
+  <string name ="Launcher.CenterToastPanel.ToastText.Bluetooth.Closed">蓝牙已断开，手柄失去连接</string>
+  <string name ="Launcher.CenterToastPanel.ToastText.Bluetooth.Opened">蓝牙已打开</string>
+
+  <string name ="Launcher.LocalPanel.MenuPanel.VideoBtn.Text">视频</string>
+  <string name ="Launcher.LocalPanel.MenuPanel.ImageBtn.Text">图片</string>
+  <string name ="Launcher.LocalPanel.MenuPanel.AppBtn.Text">应用</string>
+  <string name ="Launcher.LocalPanel.MenuPanel.ApkBtn.Text">安装包</string>
+  <string name ="Launcher.LocalPanel.MenuPanel.EditBtn.Text">删除</string>
+
+  <string name ="Launcher.AppStorePanel.MenuPanel.RecommendBtn.Text">推荐</string>
+  <string name ="Launcher.AppStorePanel.MenuPanel.GameBtn.Text">游戏</string>
+
+  <string name ="Launcher.LivePanel.MenuPanel.RecommendBtn.Text">精选</string>
+  <string name ="Launcher.LivePanel.MenuPanel.3DMoviesBtn.Text">3D电影</string>
+  <string name ="Launcher.LivePanel.MenuPanel.PanoramaBtn.801.Text">高清全景</string>
+  <string name ="Launcher.LivePanel.MenuPanel.PanoramaBtn.901.Text">8K全景</string>
+  <string name ="Launcher.LivePanel.MenuPanel.BlockbusterMoviesBtn.Text">影院大片</string>
+  <string name ="Launcher.LivePanel.MenuPanel.VRLiveBtn.Text">VR直播</string>
+  <string name ="Launcher.LivePanel.MenuPanel.4KFullScreenBtn.Text">4K全屏</string>
+
+  <string name ="Launcher.UserManagementPanel.UserUnLogin.Text">游客</string>
+  <string name ="Launcher.UserManagementPanel.UserCenterPanel.Title">个人中心</string>
+  <string name ="Launcher.UserManagementPanel.UserCenterPanel.LoginPanel.AccountText">手机号码</string>
+  <string name ="Launcher.UserManagementPanel.UserCenterPanel.LoginPanel.AccountInput.Placeholder">输入手机号</string>
+  <string name ="Launcher.UserManagementPanel.UserCenterPanel.LoginPanel.CodeText">验证码</string>
+  <string name ="Launcher.UserManagementPanel.UserCenterPanel.LoginPanel.CodeInput.Placeholder">输入验证码</string>
+  <string name ="Launcher.UserManagementPanel.UserCenterPanel.LoginPanel.CodeButton.Text">获取验证码</string>
+  <string name ="Launcher.UserManagementPanel.UserCenterPanel.LoginPanel.CodeButton.CountDown">{0}s重发</string>
+  <string name ="Launcher.UserManagementPanel.UserCenterPanel.LoginPanel.ErrorMessage">验证码错误</string>
+  <string name ="Launcher.UserManagementPanel.UserCenterPanel.LoginPanel.LoginButton.Text">登录</string>
+  <string name ="Launcher.UserManagementPanel.UserCenterPanel.LogoutPanel.LogoutButton.Text">退出登录</string>
+  <string name ="Launcher.UserManagementPanel.CollectionVideosPanel.Title">收藏视频</string>
+  <string name ="Launcher.UserManagementPanel.HistoricalRecordPanel.Title">历史记录</string>
+  <string name ="Launcher.UserManagementPanel.OrdersPanel.Title">我的消息</string>
+
+  <string name ="Launcher.UserManagementPanel.UserCenterPanel.LoginPanel.InputMobileNumber">请输入手机号</string>
+  <string name ="Launcher.UserManagementPanel.UserCenterPanel.LoginPanel.InputCorrectMobileNumber">请输入正确的手机号</string>
+  <string name ="Launcher.UserManagementPanel.UserCenterPanel.LoginPanel.InputCode">请输入验证码</string>
+  <string name ="Launcher.UserManagementPanel.UserCenterPanel.LoginPanel.CodeError">验证码错误</string>
+  <string name ="Launcher.UserManagementPanel.UserCenterPanel.LoginPanel.NetError.GetCodeError">网络异常，获取验证码失败</string>
+  <string name ="Launcher.UserManagementPanel.UserCenterPanel.LoginPanel.NetError.LoginError">网络异常，登录失败</string>
+
+  <string name ="Launcher.ToolsPanel.SearchBtn.Text">搜索</string>
+  <string name ="Launcher.ToolsPanel.CastScreenBtn.Text">投屏</string>
+  <string name ="Launcher.ToolsPanel.HomeBtn.Text">主页</string>
+  <string name ="Launcher.ToolsPanel.ScenesBtn.Text">场景</string>
+  <string name ="Launcher.ToolsPanel.SettingsBtn.Text">设置</string>
+
+  <string name ="Launcher.AppStoreDetailPanel.InfosPanel.AppType">类型：</string>
+  <string name ="Launcher.AppStoreDetailPanel.InfosPanel.AppVersion">版本：</string>
+  <string name ="Launcher.AppStoreDetailPanel.InfosPanel.AppDevelopor">制作：</string>
+  <string name ="Launcher.AppStoreDetailPanel.InfosPanel.AppSize">大小：</string>
+  
+  <string name ="Launcher.AppStoreDetailPanel.InfosPanel.DownloadButton.PriceText.Free">免费</string>
+  <string name ="Launcher.AppStoreDetailPanel.InfosPanel.DownloadButton.OpenText.Open">打开</string>
+  <string name ="Launcher.AppStoreDetailPanel.InfosPanel.DownloadButton.OpenText.Update">更新</string>
+  <string name ="Launcher.AppStoreDetailPanel.InfosPanel.DownloadButton.OpenText.Install">安装</string>
+  <string name ="Launcher.AppStoreDetailPanel.InfosPanel.DownloadButton.OpenText.Pause">继续</string>
+  <string name ="Launcher.AppStoreDetailPanel.InfosPanel.DownloadButton.OpenText.Installing">安装中...</string>
+  <string name ="Launcher.AppStoreDetailPanel.InfosPanel.DownloadButton.OpenText.Pending">等待中...</string>
+
+  <string name ="Launcher.AppStoreDetailPanel.RecommendPanel.Text">应用推荐</string>
+
+  <string name ="Launcher.SVR.AppStorePanel.LiveAppIcon.StatusText.Downloading">下载中</string>
+  <string name ="Launcher.SVR.AppStorePanel.LiveAppIcon.StatusText.Downloaded">已下载</string>
+  <string name ="Launcher.SVR.AppStorePanel.LiveAppIcon.StatusText.Installing">安装中</string>
+  <string name ="Launcher.SVR.AppStorePanel.LiveAppIcon.StatusText.Installed">已安装</string>
+  <string name ="Launcher.SVR.AppStorePanel.LiveAppIcon.StatusText.Paused">已暂停</string>
+
+  <string name ="Launcher.LivePanel.LiveVideoIcon.CollectionBtn.AddCollectionFailed">收藏失败</string>
+  <string name ="Launcher.LivePanel.LiveVideoIcon.CollectionBtn.DeleteCollectionFailed">取消收藏失败</string>
+
+  
+  <!--搜索-->
+  <string name ="Launcher.SearchPanel.inputWidget.Placeholder">请输入英文或拼音首字母</string>
+  <string name ="Launcher.SearchPanel.searchHistory.clearHisBtn.Text">清除记录</string>
+  <string name ="Launcher.SearchPanel.searchHistory.name">搜索历史</string>
+  <string name ="Launcher.SearchPanel.searchResult.toggleGroup.onLineTogg0.Label">在线视频</string>
+  <string name ="Launcher.SearchPanel.searchResult.toggleGroup.onLineTogg1.Label">本地</string>
+  <string name ="Launcher.SearchPanel.searchResult.toggleGroup.onLineTogg2.Label">待定</string>
+  <!--应用清理-->
+  <string name ="Launcher.ClearAppPanel.appInfoRoot.closeAll">全部清理</string>
+  <string name ="Launcher.ClearAppPanel.noAppRoot.Text">暂无后台运行程序</string>
+  <string name ="Launcher.ToolsPanel.ClearBtn.Text">清理</string>
+  
+  <!--Others-->
+
+</resources>

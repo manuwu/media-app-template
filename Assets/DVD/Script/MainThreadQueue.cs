@@ -11,17 +11,11 @@ using System;
 public class MainThreadQueue : MonoBehaviour
 {
     public static Queue<Action> ExecuteQueue = new Queue<Action>();
-    
-	void Start ()
-    {
-
-    }
-
+   
 	void Update ()
     {
 		while(ExecuteQueue.Count > 0)
         {
-            Debug.Log("主线程队列执行");
             ExecuteQueue.Dequeue().Invoke();
         }
 	}

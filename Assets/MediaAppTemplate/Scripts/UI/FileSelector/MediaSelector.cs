@@ -50,12 +50,6 @@ namespace Daydream.MediaAppTemplate
         public FileSelectorPageProvider fileSelector;
 
         [SerializeField]
-        private SvrVideoPlayerDemo VideoPlayerDemo;
-
-        [SerializeField]
-        private SvrVideoControlPanel VideoControlPanel;
-
-        [SerializeField]
         private GameObject PlayerRoot;
         void Awake()
         {
@@ -67,7 +61,7 @@ namespace Daydream.MediaAppTemplate
             MediaPlayerEventDispatcher.OnExitMedia += OnExitMedia;
             MediaPlayerEventDispatcher.OnNextFile += OnNextFile;
             MediaPlayerEventDispatcher.OnPreviousFile += OnPreviousFile;
-            VideoControlPanel.QuitPlayer += OnExitMedia;
+            PlayerDataControl.GetInstance().StopPlayCallBack += DestroyMediaPlayer;
         }
 
         void OnDestroy()
@@ -80,7 +74,7 @@ namespace Daydream.MediaAppTemplate
             MediaPlayerEventDispatcher.OnExitMedia -= OnExitMedia;
             MediaPlayerEventDispatcher.OnNextFile -= OnNextFile;
             MediaPlayerEventDispatcher.OnPreviousFile -= OnPreviousFile;
-            VideoControlPanel.QuitPlayer -= OnExitMedia;
+            PlayerDataControl.GetInstance().StopPlayCallBack -= DestroyMediaPlayer;
         }
 
         void Update()
@@ -109,9 +103,10 @@ namespace Daydream.MediaAppTemplate
             //TryPlayMedia(mediaType, file, currentPlayer);
             if (mediaType == MediaHelpers.MediaType.Video)
             {
+                JVideoDescriptionInfo jVideo = new JVideoDescriptionInfo(-1, file.fileName, file.fileUrl, file.fileUrl,
+                    0, 0, (int)StereoType.ST3D_LR, 0, 0, System.DateTime.Now, null, null);
+                PlayerDataControl.GetInstance().SetJVideoDscpInfoByLiveUrl(jVideo);
                 PlayerRoot.SetActive(true);
-                SvrVideoPlayerDemo.currentVideoUrl= file.fileUrl;
-                VideoPlayerDemo.PlayVideoByIndex();
             }
             else
                 return;
@@ -130,7 +125,7 @@ namespace Daydream.MediaAppTemplate
             //}
             mediaSelectorContainer.SetActive(true);
             currentFileIndex = -1;
-            VideoPlayerDemo.Stop();
+            PlayerRoot.SetActive(false);
         }
 
         private void CreateMediaPlayer(MediaHelpers.MediaType mediaType)
