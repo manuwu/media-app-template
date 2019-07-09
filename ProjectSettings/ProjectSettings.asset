@@ -158,7 +158,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.google.vr.MediaApp
+    Android: com.ssnwt.dvd
     Standalone: com.google.vr.MediaApp
     Tizen: com.google.vr.ThemePark
     iOS: com.google.vr.ThemePark
@@ -253,7 +253,7 @@ PlayerSettings:
   AndroidTVCompatibility: 1
   AndroidIsGame: 1
   AndroidEnableTango: 0
-  androidEnableBanner: 1
+  androidEnableBanner: 0
   androidUseLowAccuracyLocation: 0
   m_AndroidBanners:
   - width: 320

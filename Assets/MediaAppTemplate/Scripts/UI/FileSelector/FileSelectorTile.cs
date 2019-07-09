@@ -128,7 +128,7 @@ namespace Daydream.MediaAppTemplate
         {
             directory.javaObj = null;
             directory.isDir = false;
-            SetNameText(displayName);
+            SetNameText(file.fileName);
             this.file = file;
             this.fileIndex = fileIndex;
             CachedPrefabName = prefabName;
