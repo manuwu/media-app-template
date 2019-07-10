@@ -271,5 +271,15 @@ namespace Daydream.MediaAppTemplate
             DVDDirectoryInfo directory = new DVDDirectoryInfo(data.name);
             WorkingDirectory = directory;
         }
+
+        public void OnDiskUpdateCD()
+        {
+            breadcrumbTrail.ClearBreadcrumbs();
+            BreadcrumbData breadcrumbData = new BreadcrumbData();
+            breadcrumbData.displayName = HOME_NAME;
+            breadcrumbData.name = WorkingDirectory.fullName;
+            breadcrumbTrail.AddBreadcrumb(breadcrumbData);
+            WorkingDirectory = new DVDDirectoryInfo("Home");
+        }
     }
 }

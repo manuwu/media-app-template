@@ -62,6 +62,9 @@ namespace Daydream.MediaAppTemplate
             MediaPlayerEventDispatcher.OnNextFile += OnNextFile;
             MediaPlayerEventDispatcher.OnPreviousFile += OnPreviousFile;
             PlayerDataControl.GetInstance().StopPlayCallBack += DestroyMediaPlayer;
+            DvDInterface.GetInstance().DiskUnLockCallBack += OnDiskUnLocK;
+            DvDInterface.GetInstance().DiskUpdateCallBack += OnDIskUpdateCD;
+
         }
 
         void OnDestroy()
@@ -75,6 +78,8 @@ namespace Daydream.MediaAppTemplate
             MediaPlayerEventDispatcher.OnNextFile -= OnNextFile;
             MediaPlayerEventDispatcher.OnPreviousFile -= OnPreviousFile;
             PlayerDataControl.GetInstance().StopPlayCallBack -= DestroyMediaPlayer;
+            DvDInterface.GetInstance().DiskUnLockCallBack -= OnDiskUnLocK;
+            DvDInterface.GetInstance().DiskUpdateCallBack -= OnDIskUpdateCD;
         }
 
         void Update()
@@ -256,6 +261,20 @@ namespace Daydream.MediaAppTemplate
 
             mediaSelectorContainer.SetActive(false);
             currentFileIndex = nextIndex;
+        }
+
+        /// <summary>
+        /// 更换CD
+        /// </summary>
+        public void OnDIskUpdateCD()
+        {
+            mediaSelectorContainer.SetActive(true);
+            fileSelector.OnDiskUpdateCD();
+        }
+
+        public void OnDiskUnLocK()
+        {
+            mediaSelectorContainer.SetActive(false);
         }
     }
 }

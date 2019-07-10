@@ -16,6 +16,7 @@ public class PlayerDataControl : SingletonMB<PlayerDataControl>
     public ImagePlayManage ImagePlayManage;
     List<int> VideoIdSortList = new List<int>();//videoId对应序号
     public Action StopPlayCallBack;
+    public Action InterruptPlayer;
     private void Awake()
     {
         if (VideoPlayManage == null)

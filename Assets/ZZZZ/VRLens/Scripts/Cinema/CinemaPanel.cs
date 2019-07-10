@@ -204,6 +204,7 @@ public class CinemaPanel : MonoBehaviour
 
         //HomeButtonListener.Instance.HomeButtonCallback += HomeButtonBack;
         //HomeButtonListener.Instance.BackButtonCallback += BackButtonBack;
+        PlayerDataControl.GetInstance().InterruptPlayer += BackLocalMediaPanel;
     }
 
     void Recenter()
@@ -1164,6 +1165,7 @@ public class CinemaPanel : MonoBehaviour
         //Cinema.VideoPlayer.ScreenSizeBtnStatusControlCallback -= SubtitleUIControl;
         VideoPlayerPanel.VideoCtrlPanel.ClickBackBtnCallback -= BackLocalMediaPanel;
         VideoPlayerPanel.VideoCtrlPanel.SettingsPanel.DefinitionPanel.ChangeDefinitionModelCallback -= ChangeDefinitionModel;
+        PlayerDataControl.GetInstance().InterruptPlayer -= BackLocalMediaPanel;
 
         if (Svr.SvrSetting.IsVR9Device)
             Application.targetFrameRate = 72;

@@ -22,6 +22,8 @@ public class DvDInterface : SingletonMB<DvDInterface>
 
     private GameObject grantedObj;
     public Action DiskReadyCallBack;
+    public Action DiskUpdateCallBack;
+    public Action DiskUnLockCallBack;
     private void Awake()
     {
         InitCurrentActivity();
@@ -122,12 +124,30 @@ public class DvDInterface : SingletonMB<DvDInterface>
         MainThreadQueue.ExecuteQueue.Enqueue(() =>
         {
             if (grantedObj == null)
+            {
                 grantedObj = GameObject.Instantiate(grantedPrefab);
-            if (DiskReadyCallBack != null)
-                DiskReadyCallBack();
+                if (DiskReadyCallBack != null)
+                    DiskReadyCallBack();
+            }
+            else
+            {
+                if(DiskUpdateCallBack!=null)
+                    DiskUpdateCallBack();
+            }
         });
     }
 
+    void  OnDiskUnLock()
+    {
+        MainThreadQueue.ExecuteQueue.Enqueue(() =>
+        {
+            if (PlayerDataControl.GetInstance().InterruptPlayer != null)
+                PlayerDataControl.GetInstance().InterruptPlayer();
+            if (DiskUnLockCallBack != null)
+                DiskUnLockCallBack();
+        });
+    }
+    
     public sealed class DiskStateListener:AndroidJavaProxy
     {
         private DvDInterface mDvdTest;
@@ -163,6 +183,7 @@ public class DvDInterface : SingletonMB<DvDInterface>
         public void onUnLock()
         {
             Debug.Log("java+onUnLock");
+            mDvdTest.OnDiskUnLock();
         }
     }
 
