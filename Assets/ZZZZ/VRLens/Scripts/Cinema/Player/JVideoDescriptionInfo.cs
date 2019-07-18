@@ -25,6 +25,7 @@ public class JVideoDescriptionInfo : JMediaInfo
     public string recognitionImagePath; // 格式识别的图片
     public string vid; //KKTV使用
     public string cid; //KKTV使用
+    public bool live;  //是否是直播模式（true 播放器不做缓存）
 
     public JVideoDescriptionInfo()
     {
@@ -43,6 +44,7 @@ public class JVideoDescriptionInfo : JMediaInfo
         this.recognitionImagePath = string.Empty;
         this.vid = string.Empty;
         this.cid = string.Empty;
+        this.live = true;
     }
 
     public JVideoDescriptionInfo
@@ -61,5 +63,6 @@ public class JVideoDescriptionInfo : JMediaInfo
         this.width = width;
         this.height = height;
         this.recognitionImagePath = recognitionImagePath;
+        this.live= true;
     }
 }
