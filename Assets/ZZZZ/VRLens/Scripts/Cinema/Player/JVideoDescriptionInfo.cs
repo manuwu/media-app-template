@@ -44,7 +44,7 @@ public class JVideoDescriptionInfo : JMediaInfo
         this.recognitionImagePath = string.Empty;
         this.vid = string.Empty;
         this.cid = string.Empty;
-        this.live = true;
+        this.live = false;
     }
 
     public JVideoDescriptionInfo
@@ -63,6 +63,6 @@ public class JVideoDescriptionInfo : JMediaInfo
         this.width = width;
         this.height = height;
         this.recognitionImagePath = recognitionImagePath;
-        this.live= true;
+        this.live= false;
     }
 }

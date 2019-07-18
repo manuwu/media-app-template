@@ -95,6 +95,8 @@ public class SvrVideoPlayer : MonoBehaviour
     private static extern void SetOnVolumeChangedEvent2(IntPtr videoPlayerPtr, Action<IntPtr> volume_changed_callback, IntPtr callback_arg);
     [DllImport(dllName)]
     private static extern void SetSubtitleSource(IntPtr videoPlayerPtr, string path);
+    [DllImport(dllName)]
+    private static extern void ClearCache();
 
     private const string dllName2 = "svr_plugin_media_scan";
     [DllImport(dllName2)]
@@ -306,6 +308,11 @@ public class SvrVideoPlayer : MonoBehaviour
         return result;
     }
 #endif
+
+    public void ClearVideoCache()
+    {
+        ClearCache();
+    }
 
     /// <summary>
     /// Set-up shader value for stereo mode

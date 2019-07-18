@@ -668,6 +668,7 @@ public class CinemaPanel : MonoBehaviour
         //GlobalRunningFunction.Instance.Subtitle.transform.parent = GameObject.FindGameObjectWithTag("MainCamera").transform.parent;
         //GlobalRunningFunction.Instance.ShowControllerRayLine();
         //Cinema.ResetSphereScreenDir(); //reset 360 model's dir
+        Cinema.VideoPlayer.ClearVideoCache();
         if (PlayerDataControl.GetInstance().StopPlayCallBack != null)
             PlayerDataControl.GetInstance().StopPlayCallBack();
     }
